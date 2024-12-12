@@ -3,5 +3,5 @@
         android:width="2dp"
         android:color="@color/primary" /> <!-- Warna dan ketebalan border -->
     <corners android:radius="8dp" /> <!-- Radius untuk sudut border -->
-    <solid android:color="@android:color/transparent" /> <!-- Isi transparan -->
+    <solid android:color="@color/green" /> <!-- Isi transparan -->
 </shape>

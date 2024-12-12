@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.LoginActivity">
+    tools:context=".login.LoginActivity"
+    android:background="@color/white">
 
 
     <TextView
@@ -23,32 +24,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/emailTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/email"
-        android:textColor="@color/primary"
-        android:textSize="14sp"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="@id/emailEditTextLayout"
-        app:layout_constraintTop_toBottomOf="@id/tv_title" />
-
-
-    <TextView
-        android:id="@+id/passwordTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/password"
-        android:textColor="@color/primary"
-        android:textSize="14sp"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="@id/passwordEditTextLayout"
-        app:layout_constraintTop_toBottomOf="@id/emailEditTextLayout" />
 
     <TextView
         android:id="@+id/tv_or"
@@ -66,21 +41,35 @@
         app:layout_constraintTop_toBottomOf="@id/loginButton" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="@string/do_not_have_an_account_yet_register_here"
+        android:text="@string/already_have_an_account"
         android:textColor="@color/primary"
         android:textSize="14sp"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/googleButton"
-        app:layout_constraintHorizontal_bias="0.5"/>
+        app:layout_constraintHorizontal_bias="0.3"/>
 
 
+    <TextView
+        android:id="@+id/tv_register_here"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/nav_register_here"
+        android:textColor="@color/primary"
+        android:textSize="14sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toEndOf="@id/tv1"
+        app:layout_constraintTop_toBottomOf="@id/googleButton" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailEditTextLayout"
@@ -88,14 +77,15 @@
         android:layout_width="0dp"
         android:layout_height="64dp"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="52dp"
         android:visibility="visible"
         app:boxStrokeColor="@color/primary"
+        android:textColorHint="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/emailTextView"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
         app:shapeAppearanceOverlay="@style/ShapeAppearance">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -103,6 +93,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:textColorHint="@color/primary"
+            android:textColor="@color/primary"
             android:hint="@string/email_input_hint"
             android:inputType="textEmailAddress"
             android:visibility="visible"
@@ -116,15 +108,17 @@
         android:layout_width="0dp"
         android:layout_height="64dp"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="52dp"
         app:boxStrokeColor="@color/primary"
         android:visibility="visible"
+        android:textColorHint="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordTextView"
+        app:layout_constraintTop_toBottomOf="@id/emailEditTextLayout"
         app:shapeAppearanceOverlay="@style/ShapeAppearance"
+        app:endIconTint="@color/primary"
         app:endIconMode="password_toggle">
 
         <com.example.autograde.EditTextCustom
@@ -132,6 +126,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:ems="10"
+            android:textColorHint="@color/primary"
+            android:textColor="@color/primary"
             android:hint="@string/input_password_hint"
             android:fontFamily="@font/roboto_regular"
             android:paddingStart="10dp"
@@ -166,16 +162,37 @@
         android:layout_marginStart="52dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="52dp"
-        android:background="@drawable/button_border"
+        android:backgroundTint="@android:color/transparent"
+        app:strokeWidth="2dp"
+        app:strokeColor="@color/primary"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/login_with_google"
         android:textColor="@color/primary"
         android:textSize="14sp"
         android:visibility="visible"
-        app:iconPadding="1dp"
+        app:icon="@drawable/google_logo_search_new_svgrepo_com"
+        app:backgroundTint="@color/white"
+        app:iconTint="@null"
+        app:iconTintMode="src_in"
+        app:iconPadding="8dp"
+        app:iconGravity="start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_or" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_or"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceParticularButton"/>
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.5"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

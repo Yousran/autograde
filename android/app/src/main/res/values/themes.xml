@@ -1,8 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.AutoGrade" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryVariant">@color/primary</item>
     </style>
 
     <style name="Theme.AutoGrade" parent="Base.Theme.AutoGrade" />
@@ -10,5 +10,17 @@
     <style name="ShapeAppearance">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">5dp</item>
+    </style>
+
+    <style name="ShapeAppearanceParticularButton">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+        <item name="strokeWidth">12dp</item>
+        <item name="strokeColor">@color/primary</item>
+    </style>
+
+    <style name="ShapeAppearanceParticularButtonChecked">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
     </style>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.intermediatesubmission1.data.api.retrofit
+package com.example.autograde.data.api.retrofit
 
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -11,19 +11,19 @@ object ApiConfig {
         val loggingInterceptor =
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         val authInterceptor = Interceptor { chain ->
+            println("Bearer Token: $token") // Log token
             val req = chain.request()
             val requestHeaders = req.newBuilder()
                 .addHeader("Authorization", "Bearer $token")
                 .build()
             chain.proceed(requestHeaders)
         }
-
         val client = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .addInterceptor(authInterceptor)
             .build()
         val retrofit = Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl("https://api-dot-autograde-442112.et.r.appspot.com")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

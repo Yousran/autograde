@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".register.RegisterActivity">
+    tools:context=".register.RegisterActivity"
+    android:background="@color/white">
 
 
     <TextView
@@ -13,9 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintVertical_bias="0.15"
         android:fontFamily="@font/quicksand_bold"
-        android:text="@string/register"
+        android:text="@string/auto_grade"
         tools:alpha="100"
         android:alpha="0"
         android:textColor="@color/primary"
@@ -27,33 +28,35 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/nameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/name"
-        android:textColor="@color/primary"
-        android:textSize="14sp"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="@id/emailEditTextLayout"
-        app:layout_constraintTop_toBottomOf="@id/tv_title" />
-
-
-    <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="@string/sudah_punya_akun_ke_halaman_login"
+        android:text="@string/already_have_an_account"
         android:textColor="@color/primary"
         android:textSize="14sp"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tv_login_here"
         app:layout_constraintTop_toBottomOf="@id/googleButton"
         app:layout_constraintHorizontal_bias="0.5"/>
+
+    <TextView
+        android:id="@+id/tv_login_here"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/login_here_navigation"
+        android:textColor="@color/primary"
+        android:textSize="14sp"
+        android:visibility="visible"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toStartOf="@id/tv1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/googleButton"
+        app:layout_constraintHorizontal_bias="0.6"/>
 
     <TextView
         android:id="@+id/tv_or"
@@ -78,8 +81,10 @@
         android:layout_height="64dp"
         android:layout_marginStart="52dp"
         android:layout_marginEnd="52dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintTop_toBottomOf="@id/nameTextView"
+        android:layout_marginTop="24dp"
+        app:boxStrokeColor="@color/primary"
+        android:textColorHint="@color/primary"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -88,22 +93,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/name_text_hint"
+            android:textColorHint="@color/primary"
+            android:textColor="@color/primary"
             android:paddingStart="10dp"
             android:textSize="14sp"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Email Label -->
-    <TextView
-        android:id="@+id/emailTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/email"
-        android:textColor="@color/primary"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/nameEditTextLayout"
-        app:layout_constraintStart_toStartOf="@+id/emailEditTextLayout" />
 
     <!-- Email Input -->
     <com.google.android.material.textfield.TextInputLayout
@@ -113,8 +110,10 @@
         android:layout_height="64dp"
         android:layout_marginStart="52dp"
         android:layout_marginEnd="52dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintTop_toBottomOf="@id/emailTextView"
+        android:layout_marginTop="10dp"
+        app:boxStrokeColor="@color/primary"
+        android:textColorHint="@color/primary"
+        app:layout_constraintTop_toBottomOf="@id/nameEditTextLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -123,23 +122,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email_input_hint"
+            android:textColorHint="@color/primary"
+            android:textColor="@color/primary"
             android:paddingStart="10dp"
             android:textSize="14sp"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Password Label -->
-    <TextView
-        android:id="@+id/passwordTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/password"
-        android:textColor="@color/primary"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/emailEditTextLayout"
-        app:layout_constraintStart_toStartOf="@+id/passwordEditTextLayout" />
-
     <!-- Password Input -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordEditTextLayout"
@@ -148,9 +138,12 @@
         android:layout_height="64dp"
         android:layout_marginStart="52dp"
         android:layout_marginEnd="52dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintTop_toBottomOf="@id/passwordTextView"
+        app:boxStrokeColor="@color/primary"
+        android:textColorHint="@color/primary"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/emailEditTextLayout"
         app:layout_constraintStart_toStartOf="parent"
+        app:endIconTint="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:endIconMode="password_toggle">
 
@@ -159,23 +152,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/input_password_hint"
+            android:textColorHint="@color/primary"
+            android:textColor="@color/primary"
             android:paddingStart="10dp"
             android:textSize="14sp"
             android:inputType="textPassword" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/ConfirmPasswordTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/confirm_password"
-        android:textColor="@color/primary"
-        android:layout_marginTop="5dp"
-        android:textSize="14sp"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="@id/confirmPasswordEditTextLayout"
-        app:layout_constraintTop_toBottomOf="@id/passwordEditTextLayout" />
 
     <!-- Confirm Password Input -->
     <com.google.android.material.textfield.TextInputLayout
@@ -185,9 +169,12 @@
         android:layout_height="64dp"
         android:layout_marginStart="52dp"
         android:layout_marginEnd="52dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintTop_toBottomOf="@id/ConfirmPasswordTextView"
+        android:layout_marginTop="10dp"
+        app:boxStrokeColor="@color/primary"
+        android:textColorHint="@color/primary"
+        app:layout_constraintTop_toBottomOf="@id/passwordEditTextLayout"
         app:layout_constraintStart_toStartOf="parent"
+        app:endIconTint="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:endIconMode="password_toggle">
 
@@ -196,10 +183,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/confirm_password"
+            android:textColorHint="@color/primary"
+            android:textColor="@color/primary"
             android:paddingStart="10dp"
             android:textSize="14sp"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
+
+
     <Button
         android:id="@+id/registerButton"
         android:layout_width="0dp"
@@ -225,16 +216,38 @@
         android:layout_marginStart="52dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="52dp"
-        android:background="@drawable/button_border"
+        android:backgroundTint="@android:color/transparent"
+        app:strokeWidth="2dp"
+        app:strokeColor="@color/primary"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/login_with_google"
         android:textColor="@color/primary"
         android:textSize="14sp"
         android:visibility="visible"
-        app:iconPadding="1dp"
+        app:icon="@drawable/google_logo_search_new_svgrepo_com"
+        app:iconTint="@null"
+        app:iconTintMode="src_in"
+        app:iconPadding="8dp"
+        app:iconGravity="start"
+        app:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_or" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_or"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceParticularButton"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.5"/>
 
 
 

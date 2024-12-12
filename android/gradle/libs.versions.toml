@@ -17,6 +17,19 @@ lifecycle = "2.6.1"
 datastore = "1.0.0"
 lifecycle-livedata-ktx = "2.8.6"
 glide = "4.16.0"
+viewpager2 = "1.0.0"
+roomCommon = "2.6.1"
+roomKtx = "2.6.1"
+roomCompiler = "2.5.2"
+roomRuntime = "2.5.2"
+fragmentKtx = "1.6.1"
+ksp = "1.9.0-1.0.11"
+androidAsyncHttp = "1.4.10"
+workRuntime = "2.8.1"
+workmanager = "2.8.0"
+uiDesktop = "1.7.0"
+zxing-core = "3.5.1"
+zxing-android = "4.3.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -35,8 +48,22 @@ lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx
 datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
 lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle-livedata-ktx" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+androidx-viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2" }
+androidx-room-common = { group = "androidx.room", name = "room-common", version.ref = "roomCommon" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
+androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
+glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
+android-async-http = { module = "com.loopj.android:android-async-http", version.ref = "androidAsyncHttp" }
+androidx-work-runtime = { module = "androidx.work:work-runtime", version.ref = "workRuntime" }
+work-runtime-ktx = {module = "androidx.work:work-runtime-ktx", version.ref = "workmanager"}
+androidx-ui-desktop = { group = "androidx.compose.ui", name = "ui-desktop", version.ref = "uiDesktop" }
+zxing-core = { group = "com.google.zxing", name = "core", version.ref = "zxing-core" }
+zxing-android-embedded = { group = "com.journeyapps", name = "zxing-android-embedded", version.ref = "zxing-android" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 

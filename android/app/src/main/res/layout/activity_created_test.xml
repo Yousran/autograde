@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".view_created_test.CreatedTestActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:paddingBottom="24dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_collapseMode="parallax">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:background="@color/primary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageButton
+                        android:id="@+id/btn_back"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="10dp"
+                        android:backgroundTint="@android:color/transparent"
+                        android:src="@drawable/baseline_arrow_back_24" />
+
+                    <ImageButton
+                        android:id="@+id/btn_profile"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/circle"
+                        android:backgroundTint="@color/primary"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/default_profile" />
+
+                </com.google.android.material.appbar.MaterialToolbar>
+
+                <TextView
+                    android:id="@+id/tv_test_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textColor="@color/primary"
+                    android:textSize="30sp"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/toolbar"
+                    tools:text="@string/test_title" />
+
+                <TextView
+                    android:id="@+id/tv_test_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="@string/duration"
+                    android:textColor="@color/primary"
+                    android:textSize="14sp"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.05"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_test_title" />
+
+                <TextView
+                    android:id="@+id/tv_test_minutes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="18dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/minutes"
+                    android:textColor="@color/primary"
+                    android:textSize="13sp"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.01"
+                    app:layout_constraintStart_toEndOf="@id/tv_test_duration"
+                    app:layout_constraintTop_toBottomOf="@id/tv_test_title" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="@string/allow_response"
+                    android:textColor="@color/primary"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.95"
+                    app:layout_constraintStart_toEndOf="@id/tv_test_duration"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_test_title"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_show_qr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/primary"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/show_qr_code"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:cornerRadius="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.95"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/switch1"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceParticularButton" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/button_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingTop="24dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="24dp"
+        app:layout_anchor="@id/fragment_host"
+        app:layout_anchorGravity="top">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_view_response"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:enabled="true"
+            android:fontFamily="@font/roboto_bold"
+            android:padding="5dp"
+            android:strokeColor="@color/primary"
+            android:text="@string/response"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:visibility="visible"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceParticularButton"
+            app:strokeWidth="1dp"
+            tools:backgroundTint="@color/primary_fade"
+            tools:textColor="@color/primary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_view_question"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/transparent"
+            android:enabled="true"
+            android:fontFamily="@font/roboto_bold"
+            android:padding="5dp"
+            android:text="@string/question"
+            android:textColor="@color/primary"
+            android:textSize="14sp"
+            android:visibility="visible"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceParticularButton"
+            app:strokeColor="@color/primary"
+            app:strokeWidth="1dp" />
+
+    </LinearLayout>
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_host"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="24dp"
+        android:paddingTop="35dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_view_question"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

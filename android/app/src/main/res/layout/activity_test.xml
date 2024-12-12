@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".test.TestActivity"
+    android:background="@color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="24dp">
+
+
+            <TextView
+                android:id="@+id/tv_test_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_bold"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/test_title"
+                android:textColor="@color/primary"
+                android:textSize="25sp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.057"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.018" />
+
+            <TextView
+                android:id="@+id/tv_question"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/loremn_ipsum"
+                android:textColor="@color/primary"
+                android:textSize="14sp"
+                android:visibility="visible"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_timer" />
+
+            <TextView
+                android:id="@+id/tv_timer"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_border"
+                android:fontFamily="@font/quicksand_bold"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:text="@string/timer"
+                android:textColor="@color/primary"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.928"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_test_title" />
+
+            <TextView
+                android:id="@+id/tv_answer_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:gravity="center"
+                android:text="@string/answer"
+                android:textColor="@color/primary"
+                android:textSize="30sp"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_question" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ed_input_answer_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                app:boxStrokeColor="@color/primary"
+                android:textColorHint="@color/primary"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_answer_title">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_input_answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/primary"
+                    android:textColor="@color/primary"
+                    android:hint="@string/enter_answer"
+                    android:paddingStart="10dp"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_number_nav"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ed_input_answer_layout"
+                app:layout_constraintVertical_bias="0.8" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_previous"
+                android:layout_width="110dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:backgroundTint="@android:color/transparent"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/primary"
+                android:textSize="14sp"
+                android:visibility="visible"
+                app:layout_constraintHorizontal_bias="0.07"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_number_nav"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceParticularButton"
+                app:strokeColor="@color/primary"
+                app:strokeWidth="2dp"
+                tools:text="Back" />
+
+            <ImageButton
+                android:id="@+id/btn_bookmark"
+                android:layout_width="80dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/bg_nav_number_warning"
+                android:src="@drawable/baseline_bookmark_border_24"
+                app:layout_constraintEnd_toStartOf="@id/btn_next"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toEndOf="@id/btn_previous"
+                app:layout_constraintTop_toBottomOf="@id/rv_number_nav" />
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="110dp"
+                android:layout_height="51dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="24dp"
+                android:backgroundTint="@color/primary"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_number_nav"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceParticularButton"
+                tools:text="Next" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

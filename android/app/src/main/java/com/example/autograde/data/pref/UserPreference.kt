@@ -1,6 +1,7 @@
-package com.example.intermediatesubmission1.data.pref
+package com.example.autograde.data.pref
 
 import android.content.Context
+import androidx.core.os.persistableBundleOf
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
@@ -16,18 +17,24 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
 
     suspend fun saveSession(user: UserModel) {
         dataStore.edit { preferences ->
+            preferences[USERNAME_KEY] = user.username
             preferences[EMAIL_KEY] = user.email
             preferences[TOKEN_KEY] = user.token
             preferences[IS_LOGIN_KEY] = true
+            preferences[PROFILE_PICTURE_KEY] = user.profilePictureUrl
         }
     }
 
     fun getSession(): Flow<UserModel> {
         return dataStore.data.map { preferences ->
+            val profilePictureUrl = preferences[PROFILE_PICTURE_KEY]?.takeIf { it.isNotBlank() }
+                ?: "https://picsum.photos/200"
             UserModel(
+                preferences[USERNAME_KEY]?: "",
                 preferences[EMAIL_KEY] ?: "",
                 preferences[TOKEN_KEY] ?: "",
-                preferences[IS_LOGIN_KEY] ?: false
+                preferences[IS_LOGIN_KEY] ?: false,
+                profilePictureUrl = profilePictureUrl
             )
         }
     }
@@ -42,9 +49,11 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         @Volatile
         private var INSTANCE: UserPreference? = null
 
+        private val USERNAME_KEY = stringPreferencesKey("username")
         private val EMAIL_KEY = stringPreferencesKey("email")
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val IS_LOGIN_KEY = booleanPreferencesKey("isLogin")
+        private val PROFILE_PICTURE_KEY = stringPreferencesKey("profile_picture")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference {
             return INSTANCE ?: synchronized(this) {

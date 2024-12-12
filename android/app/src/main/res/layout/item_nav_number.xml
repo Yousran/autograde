@@ -1,0 +1,27 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="8dp"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardElevation="4dp">
+
+
+        <TextView
+            android:id="@+id/tv_number"
+            android:layout_width="38dp"
+            android:layout_height="34dp"
+            android:enabled="true"
+            android:background="@drawable/bg_border"
+            android:fontFamily="@font/quicksand_bold"
+            android:gravity="center"
+            android:text="1"
+            android:textSize="16sp"/>
+
+
+
+
+</androidx.cardview.widget.CardView>

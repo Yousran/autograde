@@ -5,22 +5,24 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.autograde.data.api.response.RegisterRequest
+import com.example.autograde.data.di.ViewModelFactory
 import com.example.autograde.databinding.ActivityRegisterBinding
 import com.example.autograde.login.LoginActivity
-import com.example.intermediatesubmission1.data.pref.UserPreference
-import com.example.intermediatesubmission1.data.pref.dataStore
-import com.example.intermediatesubmission1.viewmodel.RegisterViewModel
+import com.example.autograde.data.pref.UserPreference
+import com.example.autograde.data.pref.dataStore
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
-    private lateinit var registerViewModel: RegisterViewModel
-    // TODO: Inisialisasi ViewModel dan Instance Factory
-
+    private val registerViewModel: RegisterViewModel by viewModels {
+        ViewModelFactory.getInstance(applicationContext)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,41 +37,63 @@ class RegisterActivity : AppCompatActivity() {
             val name = binding.edRegisterName.text.toString()
             val email = binding.edRegisterEmail.text.toString()
             val password = binding.edRegisterPassword.text.toString()
+            val confirmPassword = binding.edRegisterConfirmPassword.text.toString()
 
-            if (name.isNotBlank() && email.isNotBlank() && password.isNotBlank()) {
-                registerViewModel.registerUser(name, email, password)
-            } else {
-                binding.registerButton.isEnabled = true
-                Toast.makeText(this, "Semua kolom harus diisi", Toast.LENGTH_SHORT).show()
+            when {
+                name.isBlank() -> {
+                    binding.registerButton.isEnabled = true
+                    Toast.makeText(this, "Name field must be filled in", Toast.LENGTH_SHORT).show()
+                }
+                email.isBlank() -> {
+                    binding.registerButton.isEnabled = true
+                    Toast.makeText(this, "Email field must be filled in", Toast.LENGTH_SHORT).show()
+                }
+                password.isBlank() -> {
+                    binding.registerButton.isEnabled = true
+                    Toast.makeText(this, "Password field must be filled in", Toast.LENGTH_SHORT).show()
+                }
+                confirmPassword.isBlank() -> {
+                    binding.registerButton.isEnabled = true
+                    Toast.makeText(this, "Confirm Password field must be filled in", Toast.LENGTH_SHORT).show()
+                }
+                password != confirmPassword -> {
+                    binding.registerButton.isEnabled = true
+                    Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+                }
+                else -> {
+                    val registerRequest = RegisterRequest(
+                        email = email,
+                        password = password,
+                        username = name
+                    )
+                    registerViewModel.registerUser(registerRequest)
+                }
             }
         }
 
+        registerViewModel.isLoading.observe(this) {
+            showLoading(it)
+        }
         observeViewModel()
-
-        binding.textView1.setOnClickListener {
+        binding.tvLoginHere.setOnClickListener {
             intent = Intent(this@RegisterActivity, LoginActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
     private fun observeViewModel() {
         registerViewModel.registerResponse.observe(this) { response ->
             binding.registerButton.isEnabled = true
-
-            if (response.error == true) {
-                showError(response.message)
-            } else {
+            if (response.user !== null && response.message !== null) {
                 showSuccess(response.message)
+            } else {
+                showMessage(response?.message)
             }
-        }
-
-        registerViewModel.errorMessage.observe(this) { errorMessage ->
-            binding.registerButton.isEnabled = true
-            showError(errorMessage)
         }
     }
 
-    private fun showError(message: String?) {
+    private fun showMessage(message: String?) {
         AlertDialog.Builder(this)
             .setMessage(message ?: "Terjadi kesalahan")
             .setPositiveButton("OK") { _, _ -> }
@@ -82,16 +106,15 @@ class RegisterActivity : AppCompatActivity() {
         finish()
     }
 
-    fun getToken(): String {
-        val user = UserPreference.getInstance(applicationContext.dataStore)
-        val token = runBlocking { user.getSession().first()?.token }
-        return token ?: ""
-    }
 
     private fun playAnimation() {
         ObjectAnimator.ofFloat(binding.tvTitle, View.ALPHA, 1f).setDuration(1000).apply {
             startDelay = 100
             start()
         }
+    }
+
+    private fun showLoading(isLoading : Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 }
